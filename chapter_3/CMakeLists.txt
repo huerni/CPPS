@@ -1,0 +1,6 @@
+
+set(chapter_3_SRC
+        main.cpp
+        1.cpp question.h 2.cpp 3.cpp 4.cpp 5.cpp 6.cpp 7.cpp)
+
+add_executable(chapter_3 ${chapter_3_SRC})
