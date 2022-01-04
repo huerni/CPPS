@@ -1,0 +1,78 @@
+//
+// Created by shouxin on 2022/1/4.
+//
+
+#include <iostream>
+using namespace std;
+
+const int SLEN = 30;
+
+struct student{
+    char fullname[SLEN];
+    char hobby[SLEN];
+    int ooplevel;
+};
+
+int getinfo(student pa[], int n);
+void display1(student st);
+void display2(const student *ps);
+void display3(const student pa[], int n);
+
+void question_9(){
+    cout<<"Enter the class size: ";
+    int class_size;
+    cin>>class_size;
+    while (cin.get() != '\n')
+        continue;
+    student *ptr_stu = new student[class_size];
+    int entered = getinfo(ptr_stu, class_size);
+    for(int i = 0; i<class_size; i++){
+        display1(ptr_stu[i]);
+        display2(&ptr_stu[i]);
+    }
+    display3(ptr_stu, entered);
+    delete [] ptr_stu;
+    cout<<"Done\n";
+
+}
+
+int getinfo(student pa[], int n){
+    int i = 0;
+    for(i = 0; i<n; i++){
+        cout<<"Enter the info of student name: ";
+        cin>>pa[i].fullname;
+        cout<<"Enter the info of student hobby: ";
+        cin>>pa[i].hobby;
+        cout<<"Enter the info of student level: ";
+        cin>>pa[i].ooplevel;
+        if(!cin){
+            cin.clear();
+            while (cin.get() != '\n')
+                continue;
+            cout<<"Bad input. process terminated\n";
+            break;
+        }
+    }
+
+    return i;
+}
+
+void display1(student st){
+    cout<<"Student Name: "<<st.fullname<<endl;
+    cout<<"Student hobby: "<<st.hobby<<endl;
+    cout<<"Student level: "<<st.ooplevel<<endl<<endl;
+}
+
+void display2(const student *ps){
+    cout<<"Student Name: "<<ps->fullname<<endl;
+    cout<<"Student hobby: "<<ps->hobby<<endl;
+    cout<<"Student level: "<<ps->ooplevel<<endl<<endl;
+}
+
+void display3(const student pa[], int n){
+    for(int i = 0; i<n; i++){
+        cout<<"Student Name: "<<pa[i].fullname<<endl;
+        cout<<"Student hobby: "<<pa[i].hobby<<endl;
+        cout<<"Student level: "<<pa[i].ooplevel<<endl<<endl;
+    }
+}
